@@ -3,5 +3,5 @@ plugin: aws_ec2
 regions:
   - eu-west-1
 filters:
-  tag-key: Ansible
+  tag:ansible-service: webserver
   instance-state-name: running
