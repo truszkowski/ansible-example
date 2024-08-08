@@ -1,12 +1,20 @@
 ---
 - name: Install libselinux-python
-  yum: name=libselinux-python state=present
-
-- name: Reload ansible_facts
-  setup:
+  become: true
+  ansible.builtin.yum:
+    name: libselinux-python
+    state: present
 
 - name: Copy the EPEL repository definition
-  copy: src=epel.repo dest=/etc/yum.repos.d/epel.repo
+  become: true
+  ansible.builtin.file:
+    src: epel.repo 
+    dest: /etc/yum.repos.d/epel.repo
+    mode: 0644
 
 - name: Create the GPG key for EPEL
-  copy: src=RPM-GPG-KEY-EPEL-6 dest=/etc/pki/rpm-gpg
+  become: true
+  ansible.builtin.file:
+    src: RPM-GPG-KEY-EPEL-6 
+    dest: /etc/pki/rpm-gpg
+    mode: 0644
