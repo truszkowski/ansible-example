@@ -7,14 +7,14 @@
 
 - name: Copy the EPEL repository definition
   become: true
-  ansible.builtin.file:
+  ansible.builtin.copy:
     src: epel.repo 
     dest: /etc/yum.repos.d/epel.repo
     mode: 0644
 
 - name: Create the GPG key for EPEL
   become: true
-  ansible.builtin.file:
+  ansible.builtin.copy:
     src: RPM-GPG-KEY-EPEL-6 
     dest: /etc/pki/rpm-gpg
     mode: 0644
